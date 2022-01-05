@@ -33,9 +33,9 @@ abstract class Manager
      */
     protected $namespace = null;
 
-    public function __construct(Container $container)
+    public function __construct()
     {
-        $this->container = $container;
+        $this->container = Container::getInstance();
     }
 
     /**
