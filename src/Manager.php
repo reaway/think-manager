@@ -33,9 +33,41 @@ abstract class Manager
      */
     protected $namespace = null;
 
-    public function __construct()
+    /**
+     * 配置参数
+     * @var array
+     */
+    protected $config = [];
+
+    public function __construct(array $config = [])
     {
         $this->container = Container::getInstance();
+        $this->config = array_merge($this->config, $config);
+    }
+
+    /**
+     * 设置配置
+     * @param array $config 配置参数
+     * @return void
+     */
+    public function setConfig(array $config): void
+    {
+        $this->config = array_merge($this->config, $config);
+    }
+
+    /**
+     * 获取配置
+     * @param null|string $name 名称
+     * @param mixed $default 默认值
+     * @return mixed
+     */
+    public function getConfig(string $name = null, $default = null)
+    {
+        if (!is_null($name)) {
+            return $this->config[$name] ?? $default;
+        }
+
+        return $this->config;
     }
 
     /**
