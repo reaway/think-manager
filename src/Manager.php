@@ -5,6 +5,7 @@ namespace Think\Component\Manager;
 
 use InvalidArgumentException;
 use think\helper\Str;
+use think\helper\Arr;
 use Think\Component\Container\Container;
 
 abstract class Manager
@@ -55,7 +56,7 @@ abstract class Manager
     public function getConfig(?string $name = null, $default = null)
     {
         if (!is_null($name)) {
-            return $this->config[$name] ?? $default;
+            return Arr::get($this->config, $name, $default);
         }
 
         return $this->config;
