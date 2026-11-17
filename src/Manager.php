@@ -34,7 +34,7 @@ abstract class Manager
     public function __construct(array $config = [])
     {
         $this->container = Container::getInstance();
-        $this->config = array_merge($this->config, $config);
+        $this->setConfig($config);
     }
 
     /**
